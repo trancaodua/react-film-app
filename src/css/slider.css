@@ -1,0 +1,161 @@
+* {
+    -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: none;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel__viewport {
+    height: 300px;
+    display: flex;
+    overflow-x: scroll;
+    counter-reset: item;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel__slide {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    counter-increment: item;
+}
+
+.carousel__slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel__slide:nth-child(even) {
+    background-color: #99f;
+}
+
+.carousel__snapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
+}
+
+.carousel__snapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel__navigation {
+    position: absolute;
+    color: black;
+    bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel__navigation button {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    width: 25px;
+    height: 25px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.carousel__navigation .actived {
+    background-color: #ffffffbd;
+}
+
+@keyframes tonext {
+    75% {
+        left: 0;
+    }
+    95% {
+        left: 100%;
+    }
+    98% {
+        left: 100%;
+    }
+    99% {
+        left: 0;
+    }
+}
+
+@keyframes snap {
+    96% {
+        scroll-snap-align: center;
+    }
+    97% {
+        scroll-snap-align: none;
+    }
+    99% {
+        scroll-snap-align: none;
+    }
+    100% {
+        scroll-snap-align: center;
+    }
+}
+
+@keyframes tostart {
+    75% {
+        left: 0;
+    }
+    95% {
+        left: -400%;
+    }
+    98% {
+        left: -400%;
+    }
+    99% {
+        left: 0;
+    }
+}
+
+/* @media (hover: hover) {
+    .carousel__snapper {
+        animation-name: tonext, snap;
+        animation-timing-function: ease;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+    }
+    .carousel__slide:last-child .carousel__snapper {
+        animation-name: tostart, snap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel__snapper {
+        animation-name: none;
+    }
+} */
+
+.carousel__slide:before {
+    content: counter(item);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -40%, 70px);
+    color: #fff;
+    font-size: 2em;
+}

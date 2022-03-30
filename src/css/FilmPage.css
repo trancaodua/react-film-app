@@ -1,0 +1,98 @@
+.film-page {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+    margin-bottom: 50px;
+}
+
+.film-wrapper {
+    width: 100%;
+    gap: 5px;
+    position: relative;
+}
+
+.film-page-pagination button {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.film-page-pagination button:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.film-page-pagination .active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.film-wrapper img {
+    width: 100%;
+    height: 100%;
+    /* transition: height 5s; */
+}
+
+.film-wrapper:hover {
+    transform: scale(1.1);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.description {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.film-wrapper::before {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #ff9601ad;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    content: "";
+    transition: all 0.4s ease;
+}
+
+.film-wrapper:hover::before {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.film-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translateY(-50%) translateX(-40%);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent transparent transparent #fff;
+    z-index: 101;
+    transition: all 0.4s ease;
+}
+
+.film-wrapper:hover::after {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-width: 12px 0px 12px 24px;
+}
